@@ -2,8 +2,6 @@ package src.simstation;
 
 import src.mvc.Model;
 import java.util.*;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable

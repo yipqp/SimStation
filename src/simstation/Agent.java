@@ -4,7 +4,7 @@ package src.simstation;
 public abstract class Agent implements Runnable {
 
     protected String name;
-    protected String heading;
+    protected Heading heading;
     protected Thread myThread;
     protected int xc;
     protected int yc;
@@ -18,7 +18,7 @@ public abstract class Agent implements Runnable {
         myThread = null;
     }
 
-    public Agent(String name, String heading) {
+    public Agent(String name, Heading heading) {
         this.name = name;
         this.heading = heading;
         suspended = false;
