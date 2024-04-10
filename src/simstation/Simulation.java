@@ -1,13 +1,19 @@
 package src.simstation;
 
 import src.mvc.Model;
-
+import java.util.*;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Simulation extends Model {
+    transient private Timer timer; // timers aren't serializable
     private int clock = 0;
     protected List<Agent> agents;
+
+    private void stopTimer() {
+        timer.cancel();
+        timer.purge();
+    }
 
     public Simulation() {
         agents = new LinkedList<>();
@@ -35,5 +41,11 @@ public class Simulation extends Model {
 
     public void populate() {
         //will be overwritten on implementation
+    }
+
+    private class ClockUpdater extends TimerTask {
+        public void run() {
+            clock++;
+        }
     }
 }
