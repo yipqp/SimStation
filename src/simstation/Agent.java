@@ -1,11 +1,13 @@
 package src.simstation;
 
 
+import java.awt.*;
+
 public abstract class Agent implements Runnable {
 
     protected String name;
     protected Heading heading;
-    protected Thread myThread;
+    transient protected Thread myThread;
     protected int xc;
     protected int yc;
     private boolean suspended, stopped;
@@ -74,9 +76,42 @@ public abstract class Agent implements Runnable {
         System.out.println(name + " stopped");
     }
 
-    public void move(int steps) {
-        //will be overwritten upon implementation
-        world.changed();
+    public synchronized void move(int steps) {
+        Point oldPos = new Point(xc, yc);
+        switch (heading) {
+            case NORTH:
+                for (int i = 0; i < steps; i++) {
+                    if (yc < 0) {
+                        yc = Simulation.SIZE - 1;
+                    } else {
+                        yc = yc - 1;
+                    }
+                    world.changed();
+                }
+                break;
+            case SOUTH:
+                for (int i = 0; i < steps; i++) {
+                    yc = (yc + 1) % Simulation.SIZE;
+                    world.changed();
+                }
+                break;
+            case EAST:
+                for (int i = 0; i < steps; i++) {
+                    xc = (xc + 1) % Simulation.SIZE;
+                    world.changed();
+                }
+                break;
+            case WEST:
+                for (int i = 0; i < steps; i++) {
+                    if (xc < 0) {
+                        xc = Simulation.SIZE - 1;
+                    } else {
+                        xc = xc - 1;
+                    }
+                    world.changed();
+                }
+                break;
+        }
     }
 
     public abstract void update();
