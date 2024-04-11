@@ -20,6 +20,11 @@ public abstract class Agent implements Runnable {
         myThread = null;
     }
 
+    public Agent(String name) {
+        super();
+        this.name = name;
+    }
+
     public Agent(String name, Heading heading) {
         this.name = name;
         this.heading = heading;
@@ -53,6 +58,7 @@ public abstract class Agent implements Runnable {
     private synchronized void checkSuspended() {
         try {
             while(!stopped && suspended) {
+                System.out.println(name + " suspended");
                 wait();
                 suspended = false;
             }
@@ -85,30 +91,38 @@ public abstract class Agent implements Runnable {
                     } else {
                         yc = yc - 1;
                     }
-                    world.changed();
                 }
+                world.changed();
                 break;
             case SOUTH:
                 for (int i = 0; i < steps; i++) {
-                    yc = (yc + 1) % Simulation.SIZE;
-                    world.changed();
+                    if (yc > Simulation.SIZE - 1) {
+                        yc = 0;
+                    } else {
+                        yc = yc + 1;
+                    }
                 }
+                world.changed();
                 break;
             case EAST:
-                for (int i = 0; i < steps; i++) {
-                    xc = (xc + 1) % Simulation.SIZE;
-                    world.changed();
-                }
-                break;
-            case WEST:
                 for (int i = 0; i < steps; i++) {
                     if (xc < 0) {
                         xc = Simulation.SIZE - 1;
                     } else {
                         xc = xc - 1;
                     }
-                    world.changed();
                 }
+                world.changed();
+                break;
+            case WEST:
+                for (int i = 0; i < steps; i++) {
+                    if (xc > Simulation.SIZE - 1) {
+                        xc = 0;
+                    } else {
+                        xc = xc + 1;
+                    }
+                }
+                world.changed();
                 break;
         }
     }

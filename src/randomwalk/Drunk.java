@@ -11,7 +11,13 @@ class Drunk extends Agent {
         heading = Heading.random();
     }
 
-    public void update() {
+    public Drunk(String name) {
+        super(name);
+        heading = Heading.random();
+    }
+
+    public synchronized void update() {
+        System.out.println("Name: " + getName() + ": (" + xc + ", " + yc + ")");
         heading = Heading.random();
         int steps = Utilities.rng.nextInt(10) + 1;
         move(steps);

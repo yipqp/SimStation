@@ -5,8 +5,8 @@ import src.mvc.*;
 public class RandomWalkSimulation extends Simulation {
 
     public void populate() {
-        //for(int i = 0; i < 15; i++)
-            addAgent(new Drunk());
+        for (int i = 1; i <= 15; i++)
+            addAgent(new Drunk("Agent " + i));
     }
 
     public static void main(String[] args) {
