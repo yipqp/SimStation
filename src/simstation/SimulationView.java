@@ -8,9 +8,10 @@ public class SimulationView extends View{
 
     int x;
     int y;
+    JPanel simulationArea;
     public SimulationView(Simulation model) {
         super(model);
-        JPanel simulationArea = new JPanel();
+        simulationArea = new JPanel();
         setBackground(Color.DARK_GRAY);
         for(Agent eachAgent : model.agents) {
             x = eachAgent.xc;
@@ -20,7 +21,12 @@ public class SimulationView extends View{
     }
     @Override
     public void update() {
-        repaint();
+        Simulation sim = (Simulation) model;
+        for(Agent eachAgent : sim.agents) {
+            x = eachAgent.xc;
+            y = eachAgent.yc;
+            simulationArea.paint(null);
+        }
     }
 
 
@@ -28,6 +34,6 @@ public class SimulationView extends View{
     public void paint(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.white);
-        g.fillRect(x, y, 10, 10);
+        g.fillRect(x, y, 10, 1);
     }
 }

@@ -10,6 +10,7 @@ public class StartCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-
+        Simulation sim = (Simulation)model;
+        sim.start();
     }
 }

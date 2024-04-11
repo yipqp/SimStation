@@ -19,7 +19,7 @@ public class SimStationFactory implements AppFactory {
 
     @Override
     public String[] getHelp() {
-        return new String[0];
+        return new String[]{"Start: starts the simulation.", "Suspend: suspends or pauses the simulation.", "Resume: resumes the simulation after being suspended.", "Stop: stops the simulation", "Stats: lists the number of agents and the time in seconds."};
     }
 
     @Override

@@ -49,4 +49,8 @@ public class Simulation extends Model {
             clock++;
         }
     }
+
+    public int getClock() {
+        return clock;
+    }
 }
