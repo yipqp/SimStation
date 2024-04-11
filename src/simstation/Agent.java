@@ -1,6 +1,8 @@
 package src.simstation;
 
 
+import java.awt.*;
+
 public abstract class Agent implements Runnable {
 
     protected String name;
@@ -58,7 +60,6 @@ public abstract class Agent implements Runnable {
             System.out.println(e.getMessage());
         }
     }
-
 
     public void run() {
         myThread = Thread.currentThread();

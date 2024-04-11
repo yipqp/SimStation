@@ -1,6 +1,9 @@
 package src.randomwalk;
 
-class RandomWalkFactory extends SimulationFactory {
+import src.mvc.*;
+import src.simstation.*;
+
+class RandomWalkFactory extends SimStationFactory {
     public Model makeModel() { return new RandomWalkSimulation(); }
     public String getTitle() { return "Random Walks";}
 }
