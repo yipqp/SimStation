@@ -1,4 +1,6 @@
 package src.randomwalk;
+import src.simstation.*;
+import src.mvc.*;
 
 public class RandomWalkSimulation extends Simulation {
 

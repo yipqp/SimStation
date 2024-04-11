@@ -61,7 +61,6 @@ public abstract class Agent implements Runnable {
         }
     }
 
-
     public void run() {
         myThread = Thread.currentThread();
         while (!stopped) {

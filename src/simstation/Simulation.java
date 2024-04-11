@@ -42,9 +42,16 @@ public class Simulation extends Model {
         //will be overwritten on implementation
     }
 
+    public void addAgent(Agent a) {
+        agents.add(a);
+    }
     private class ClockUpdater extends TimerTask {
         public void run() {
             clock++;
         }
+    }
+
+    public int getClock() {
+        return clock;
     }
 }
