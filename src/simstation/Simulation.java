@@ -6,7 +6,7 @@ import java.util.*;
 public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable
     private int clock = 0;
-    protected static final int SIZE = 20; // ?? arbitrary number, figure it out later
+    protected static final int SIZE = 500; // ?? arbitrary number, figure it out later
     protected List<Agent> agents;
 
     private void stopTimer() {
