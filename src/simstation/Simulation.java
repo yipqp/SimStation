@@ -44,6 +44,7 @@ public class Simulation extends Model {
 
     public void addAgent(Agent a) {
         agents.add(a);
+        a.setWorld(this);
     }
     private class ClockUpdater extends TimerTask {
         public void run() {

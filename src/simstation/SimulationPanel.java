@@ -1,5 +1,6 @@
 package src.simstation;
 import src.mvc.*;
+import src.randomwalk.RandomWalkFactory;
 
 import javax.swing.*;
 
@@ -28,7 +29,7 @@ public class SimulationPanel extends AppPanel{
     }
 
     public static void main(String[] args) {
-        AppPanel panel = new SimulationPanel(new SimStationFactory());
+        AppPanel panel = new SimulationPanel(new RandomWalkFactory());
         panel.display();
     }
 }

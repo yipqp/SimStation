@@ -28,7 +28,7 @@ public abstract class Agent implements Runnable {
         myThread = null;
     }
 
-    public void setWorld (Simulation s) { world = s; }
+    public void setWorld(Simulation s) { world = s; }
     public String getName() { return name; }
     public synchronized String toString() {
         String result = name;
