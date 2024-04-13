@@ -1,7 +1,5 @@
 package src.simstation;
 import src.mvc.*;
-
-import javax.swing.*;
 import java.awt.*;
 
 public class SimulationView extends View {
@@ -19,7 +17,7 @@ public class SimulationView extends View {
         Simulation sim = (Simulation) model;
         g.setColor(Color.WHITE);
         for(Agent eachAgent : sim.agents) {
-            g.fillRect(eachAgent.xc, eachAgent.yc, 10,10);
+            g.fillOval(eachAgent.xc, eachAgent.yc, 10,10);
         }
     }
 }
