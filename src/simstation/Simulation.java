@@ -34,7 +34,19 @@ public class Simulation extends Model {
 
     public void suspend() { for (Agent a: agents) { a.suspend(); }}
 
-    public void resume() { for (Agent a: agents) { a.resume(); }}
+    public void resume() {
+        if (timer == null) { //this accounts for importing new simulations
+            startTimer();
+            for (Agent a: agents) {
+                Thread thread = new Thread(a);
+                thread.start();
+            }
+        } else {
+            for (Agent a: agents) {
+                a.resume();
+            }
+        }
+    }
 
     public void stop() {
         for (Agent a: agents) {

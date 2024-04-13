@@ -2,15 +2,16 @@ package src.simstation;
 
 
 import java.awt.*;
+import java.io.Serializable;
 
-public abstract class Agent implements Runnable {
+public abstract class Agent implements Runnable, Serializable {
 
     protected String name;
     protected Heading heading;
     transient protected Thread myThread;
     protected int xc;
     protected int yc;
-    private boolean suspended, stopped;
+    protected boolean suspended, stopped;
     protected Simulation world;
 
 
