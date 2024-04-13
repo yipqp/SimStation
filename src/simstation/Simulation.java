@@ -6,7 +6,7 @@ import java.util.*;
 public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable
     private int clock = 0;
-    protected static final int SIZE = 20; // ?? arbitrary number, figure it out later
+    protected static final int SIZE = 490; // ?? arbitrary number, figure it out later
     protected List<Agent> agents;
 
     private void stopTimer() {
@@ -22,9 +22,6 @@ public class Simulation extends Model {
         for (Agent a: agents) {
             Thread thread = new Thread(a);
             thread.start();
-        }
-        for (Agent a: agents) {
-            a.join();
         }
     }
 
@@ -44,6 +41,7 @@ public class Simulation extends Model {
 
     public void addAgent(Agent a) {
         agents.add(a);
+        a.setWorld(this);
     }
     private class ClockUpdater extends TimerTask {
         public void run() {
