@@ -1,8 +1,6 @@
 package src.randomwalk;
 import src.mvc.*;
 import src.simstation.*;
-import java.awt.*;
-import java.util.Iterator;
 
 class Drunk extends Agent {
 
@@ -17,7 +15,6 @@ class Drunk extends Agent {
     }
 
     public synchronized void update() {
-        System.out.println("Name: " + getName() + ": (" + xc + ", " + yc + ")");
         heading = Heading.random();
         int steps = Utilities.rng.nextInt(10) + 1;
         move(steps);

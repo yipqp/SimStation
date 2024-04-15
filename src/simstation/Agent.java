@@ -9,8 +9,8 @@ public abstract class Agent implements Runnable, Serializable {
     protected String name;
     protected Heading heading;
     transient protected Thread myThread;
-    protected int xc;
-    protected int yc;
+    protected int xc = 0;
+    protected int yc = 0;
     protected boolean suspended, stopped;
     protected Simulation world;
 
@@ -36,6 +36,10 @@ public abstract class Agent implements Runnable, Serializable {
 
     public void setWorld(Simulation s) { world = s; }
     public String getName() { return name; }
+
+    public Heading getHeading() {
+        return heading;
+    }
     public synchronized String toString() {
         String result = name;
         if (stopped) result += " (stopped)";

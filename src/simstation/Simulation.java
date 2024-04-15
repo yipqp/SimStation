@@ -13,6 +13,7 @@ public class Simulation extends Model {
         timer = new Timer();
         timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
     }
+
     private void stopTimer() {
         timer.cancel();
         timer.purge();
@@ -30,6 +31,10 @@ public class Simulation extends Model {
             Thread thread = new Thread(a);
             thread.start();
         }
+    }
+
+    public List<Agent> getAgents() {
+        return agents;
     }
 
     public void suspend() { for (Agent a: agents) { a.suspend(); }}
