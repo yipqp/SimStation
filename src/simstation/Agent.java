@@ -9,8 +9,8 @@ public abstract class Agent implements Runnable, Serializable {
     protected String name;
     protected Heading heading;
     transient protected Thread myThread;
-    protected int xc = 0;
-    protected int yc = 0;
+    public int xc = 0;
+    public int yc = 0;
     protected boolean suspended, stopped;
     protected Simulation world;
 

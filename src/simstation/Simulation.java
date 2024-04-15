@@ -7,7 +7,7 @@ public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable
     private int clock = 0;
     protected static final int SIZE = 445; // ?? arbitrary number, figure it out later
-    protected List<Agent> agents;
+    public List<Agent> agents;
 
     private void startTimer() {
         timer = new Timer();
@@ -67,10 +67,34 @@ public class Simulation extends Model {
         int numVisitedAgents = 0;
         for(int i = randomNeighborIndex; i < agents.size(); i++) {
             numVisitedAgents++;
+            Agent currAgent = agents.get(i);
+
+            double wrapTop = a.yc + radius;
+            if(wrapTop > SIZE) {
+                wrapTop = SIZE - wrapTop;
+            }
+
+            double wrapBottom = a.yc - radius;
+            if(wrapBottom < 0) {
+                wrapBottom = Math.abs(wrapBottom);
+            }
+
+            double wrapRight = a.xc + radius;
+            if(wrapRight > SIZE) {
+                wrapRight = SIZE - wrapRight;
+            }
+
+            double wrapLeft = a.xc - radius;
+            if(wrapLeft < 0) {
+                wrapLeft = Math.abs(wrapLeft);
+            }
+
             if(numVisitedAgents == agents.size()) {
                 return neighbor; //no agent found
             }
-            if((agents.get(i) != a) && (agents.get(i).xc > a.xc - radius && agents.get(i).xc < a.xc + radius) && (agents.get(i).yc > a.yc - radius && agents.get(i).yc < a.yc + radius)) {
+            if((currAgent != a) &&
+                    (((currAgent.xc > a.xc - radius && currAgent.xc < a.xc + radius) && (currAgent.yc > a.yc - radius && currAgent.yc < a.yc + radius)) || ((currAgent.xc > wrapLeft && currAgent.xc < wrapRight) && (currAgent.yc > wrapBottom && currAgent.yc < wrapTop))))
+            {
                 neighbor = agents.get(i); //neighbor found
                 return neighbor;
             }
