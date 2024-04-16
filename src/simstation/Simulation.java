@@ -7,7 +7,7 @@ public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable
     private int clock = 0;
     protected static final int SIZE = 445; // ?? arbitrary number, figure it out later
-    public List<Agent> agents;
+    protected List<Agent> agents;
 
     private void startTimer() {
         timer = new Timer();
@@ -63,46 +63,26 @@ public class Simulation extends Model {
     public Agent getNeighbor(Agent a, double radius) {
         Random ranGen = new Random();
         int randomNeighborIndex = ranGen.nextInt(agents.size());
-        Agent neighbor = null;
-        int numVisitedAgents = 0;
-        for(int i = randomNeighborIndex; i < agents.size(); i++) {
-            numVisitedAgents++;
-            Agent currAgent = agents.get(i);
+        for (int i = 0; i < agents.size(); i++) {
+            Agent neighbor = agents.get(randomNeighborIndex);
 
-            double wrapTop = a.yc + radius;
-            if(wrapTop > SIZE) {
-                wrapTop = SIZE - wrapTop;
-            }
+            double left = a.xc - radius;
+            double right = a.xc + radius;
+            double up = a.yc - radius;
+            double down = a.yc + radius;
 
-            double wrapBottom = a.yc - radius;
-            if(wrapBottom < 0) {
-                wrapBottom = Math.abs(wrapBottom);
-            }
-
-            double wrapRight = a.xc + radius;
-            if(wrapRight > SIZE) {
-                wrapRight = SIZE - wrapRight;
-            }
-
-            double wrapLeft = a.xc - radius;
-            if(wrapLeft < 0) {
-                wrapLeft = Math.abs(wrapLeft);
-            }
-
-            if(numVisitedAgents == agents.size()) {
-                return neighbor; //no agent found
-            }
-            if((currAgent != a) &&
-                    (((currAgent.xc > a.xc - radius && currAgent.xc < a.xc + radius) && (currAgent.yc > a.yc - radius && currAgent.yc < a.yc + radius)) || ((currAgent.xc > wrapLeft && currAgent.xc < wrapRight) && (currAgent.yc > wrapBottom && currAgent.yc < wrapTop))))
-            {
-                neighbor = agents.get(i); //neighbor found
+            if (neighbor != a
+                    && (neighbor.xc > left || neighbor.xc > SIZE + left)
+                    && (neighbor.xc < right || neighbor.xc < right % SIZE)
+                    && (neighbor.yc > up || neighbor.yc > SIZE + up)
+                    && (neighbor.yc < down || neighbor.yc < down % SIZE)) {
                 return neighbor;
             }
-            if (i == agents.size() - 1) {
-                i = 0; //loop back around
-            }
+
+            randomNeighborIndex = (randomNeighborIndex + 1) % agents.size();
         }
-        return neighbor;
+
+        return null;
     }
 
     public void populate() {

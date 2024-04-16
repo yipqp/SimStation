@@ -87,7 +87,6 @@ public abstract class Agent implements Runnable, Serializable {
     }
 
     public synchronized void move(int steps) {
-        Point oldPos = new Point(xc, yc);
         switch (heading) {
             case NORTH:
                 for (int i = 0; i < steps; i++) {
@@ -97,7 +96,6 @@ public abstract class Agent implements Runnable, Serializable {
                         yc = yc - 1;
                     }
                 }
-                world.changed();
                 break;
             case SOUTH:
                 for (int i = 0; i < steps; i++) {
@@ -107,7 +105,6 @@ public abstract class Agent implements Runnable, Serializable {
                         yc = yc + 1;
                     }
                 }
-                world.changed();
                 break;
             case EAST:
                 for (int i = 0; i < steps; i++) {
@@ -117,7 +114,6 @@ public abstract class Agent implements Runnable, Serializable {
                         xc = xc - 1;
                     }
                 }
-                world.changed();
                 break;
             case WEST:
                 for (int i = 0; i < steps; i++) {
@@ -127,9 +123,9 @@ public abstract class Agent implements Runnable, Serializable {
                         xc = xc + 1;
                     }
                 }
-                world.changed();
                 break;
         }
+        world.changed();
     }
 
     public abstract void update();
