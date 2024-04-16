@@ -63,22 +63,26 @@ public class Simulation extends Model {
     public Agent getNeighbor(Agent a, double radius) {
         Random ranGen = new Random();
         int randomNeighborIndex = ranGen.nextInt(agents.size());
-        Agent neighbor = null;
-        int numVisitedAgents = 0;
-        for(int i = randomNeighborIndex; i < agents.size(); i++) {
-            numVisitedAgents++;
-            if(numVisitedAgents == agents.size()) {
-                return neighbor; //no agent found
-            }
-            if((agents.get(i) != a) && (agents.get(i).xc > a.xc - radius && agents.get(i).xc < a.xc + radius) && (agents.get(i).yc > a.yc - radius && agents.get(i).yc < a.yc + radius)) {
-                neighbor = agents.get(i); //neighbor found
+        for (int i = 0; i < agents.size(); i++) {
+            Agent neighbor = agents.get(randomNeighborIndex);
+
+            double left = a.xc - radius;
+            double right = a.xc + radius;
+            double up = a.yc - radius;
+            double down = a.yc + radius;
+
+            if (neighbor != a
+                    && (neighbor.xc > left || neighbor.xc > SIZE + left)
+                    && (neighbor.xc < right || neighbor.xc < right % SIZE)
+                    && (neighbor.yc > up || neighbor.yc > SIZE + up)
+                    && (neighbor.yc < down || neighbor.yc < down % SIZE)) {
                 return neighbor;
             }
-            if (i == agents.size() - 1) {
-                i = 0; //loop back around
-            }
+
+            randomNeighborIndex = (randomNeighborIndex + 1) % agents.size();
         }
-        return neighbor;
+
+        return null;
     }
 
     public void populate() {
