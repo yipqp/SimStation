@@ -22,6 +22,7 @@ public class Bird extends Agent {
     }
 
     public synchronized void update() {
+        System.out.println("Name: " + getName() + ": (" + xc + ", " + yc + ")");
         Agent n = this.world.getNeighbor(this, 10);
         if (n != null) {
             this.heading = n.getHeading();

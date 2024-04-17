@@ -23,6 +23,7 @@ public class Simulation extends Model {
         agents = new LinkedList<>();
     }
     public void start() {
+        stop();
         clock = 0;
         agents.removeAll(agents);
         startTimer();
@@ -57,7 +58,9 @@ public class Simulation extends Model {
         for (Agent a: agents) {
             a.stop();
         }
-        stopTimer();
+        if(timer != null) {
+            stopTimer();
+        }
     }
 
     public Agent getNeighbor(Agent a, double radius) {
