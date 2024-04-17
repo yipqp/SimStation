@@ -2,7 +2,6 @@ package src.plauge;
 import src.mvc.Utilities;
 import src.simstation.*;
 
-import java.util.List;
 import java.util.Random;
 
 public class Host extends Agent{
@@ -18,6 +17,12 @@ public class Host extends Agent{
         heading = Heading.random();
     }
 
+    public Host(String name, Boolean infected) {
+        super(name);
+        heading = Heading.random();
+        this.infected = infected;
+    }
+
     public void infect() {
         infected = true;
     }
@@ -26,19 +31,22 @@ public class Host extends Agent{
     public void update() {
         System.out.println("Name: " + getName() + ": (" + xc + ", " + yc + ")");
         heading = Heading.random();
-        int steps = Utilities.rng.nextInt(10) + 1;
-        move(steps);
-        if(this.infected) {
-            Random rng = new Random();
-            double infectionChance = rng.nextDouble(100);
-            if(infectionChance < PlaugeSimulation.VIRULENCE) {
-                infectionChance = rng.nextDouble(100);
-                if(!(infectionChance < PlaugeSimulation.RESISTANCE)) {
-                    Host potentialHost = (Host) world.getNeighbor(this, 10);
-                    potentialHost.infect();
+        if(!stopped && !suspended) {
+            int steps = Utilities.rng.nextInt(10) + 1;
+            move(steps);
+            if (this.infected) {
+                Random rng = new Random();
+                double infectionChance = rng.nextDouble(100);
+                if (infectionChance < PlaugeSimulation.VIRULENCE) {
+                    infectionChance = rng.nextDouble(100);
+                    if (!(infectionChance < PlaugeSimulation.RESISTANCE)) {
+                        Host potentialHost = (Host) world.getNeighbor(this, 10);
+                        if (potentialHost != null) {
+                            potentialHost.infect();
+                        }
+                    }
                 }
             }
-
         }
     }
 }
