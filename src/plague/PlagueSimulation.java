@@ -1,11 +1,9 @@
-package src.plauge;
+package src.plague;
 
 import src.mvc.*;
 import src.simstation.*;
 
-import java.util.Random;
-
-public class PlaugeSimulation extends Simulation {
+public class PlagueSimulation extends Simulation {
     public static int VIRULENCE = 50;
     public static int RESISTANCE = 2;
     public static int STARTINFECTED = 1; //percentage of hosts that start infected
@@ -24,15 +22,15 @@ public class PlaugeSimulation extends Simulation {
     }
 
     public static void setRESISTANCE(int RESISTANCE) {
-        PlaugeSimulation.RESISTANCE = RESISTANCE;
+        PlagueSimulation.RESISTANCE = RESISTANCE;
     }
 
     public static void setVIRULENCE(int VIRULENCE) {
-        PlaugeSimulation.VIRULENCE = VIRULENCE;
+        PlagueSimulation.VIRULENCE = VIRULENCE;
     }
 
     public static void setSTARTINFECTED(int STARTINFECTED) {
-        PlaugeSimulation.STARTINFECTED = STARTINFECTED;
+        PlagueSimulation.STARTINFECTED = STARTINFECTED;
     }
 
     public double getPercentInfected() {
@@ -47,7 +45,7 @@ public class PlaugeSimulation extends Simulation {
     }
 
     public static void main(String[] args) {
-        AppPanel panel = new SimulationPanel(new PlaugeFactory());
+        AppPanel panel = new SimulationPanel(new PlagueFactory());
         panel.display();
     }
 }

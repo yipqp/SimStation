@@ -1,14 +1,13 @@
-package src.plauge;
+package src.plague;
 
-import src.randomwalk.RandomWalkSimulation;
 import src.simstation.*;
 import src.mvc.*;
 
-public class PlaugeFactory extends SimStationFactory {
-    public Model makeModel() { return new PlaugeSimulation(); }
+public class PlagueFactory extends SimStationFactory {
+    public Model makeModel() { return new PlagueSimulation(); }
     public String getTitle() { return "Plague";}
     public View makeView(Model m) {
-        return new PlaugeView((PlaugeSimulation) m);
+        return new PlagueView((PlagueSimulation) m);
     }
     @Override
     public Command makeEditCommand(Model m, String type, Object source) {
@@ -17,7 +16,7 @@ public class PlaugeFactory extends SimStationFactory {
             case "Suspend": return new SuspendCommand(m);
             case "Resume": return new ResumeCommand(m);
             case "Stop": return new StopCommand(m);
-            case "Stats": return new PlaugeStatsCommand(m);
+            case "Stats": return new PlagueStatsCommand(m);
             default: return null;
         }
     }

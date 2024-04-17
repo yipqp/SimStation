@@ -1,14 +1,13 @@
-package src.plauge;
+package src.plague;
 
 import src.simstation.Agent;
-import src.simstation.Simulation;
 import src.simstation.SimulationView;
 
 import java.awt.*;
 
-public class PlaugeView extends SimulationView {
+public class PlagueView extends SimulationView {
 
-    public PlaugeView(PlaugeSimulation model) {
+    public PlagueView(PlagueSimulation model) {
         super(model);
         setBackground(Color.LIGHT_GRAY);
     }
@@ -16,7 +15,7 @@ public class PlaugeView extends SimulationView {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        PlaugeSimulation sim = (PlaugeSimulation) model;
+        PlagueSimulation sim = (PlagueSimulation) model;
         for(Agent eachAgent : sim.agents) {
             if(((Host)eachAgent).infected) {
                 g.setColor(Color.RED);
