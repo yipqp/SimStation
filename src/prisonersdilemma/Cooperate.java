@@ -2,7 +2,7 @@ package src.prisonersdilemma;
 
 public class Cooperate extends Strategy {
 
-    public static int fitness = 0;
+    protected static int fitness = 0;
     @Override
     public boolean cooperate() {
         return true;

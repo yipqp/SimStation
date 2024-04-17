@@ -1,8 +1,7 @@
 package src.prisonersdilemma;
 
 public class Cheat extends Strategy {
-
-    public static int fitness = 0;
+    protected static int fitness = 0;
 @Override
     public boolean cooperate() {
         return false;
