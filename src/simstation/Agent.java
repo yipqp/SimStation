@@ -1,6 +1,8 @@
 package src.simstation;
 
 
+import src.mvc.Utilities;
+
 import java.awt.*;
 import java.io.Serializable;
 
@@ -9,8 +11,8 @@ public abstract class Agent implements Runnable, Serializable {
     protected String name;
     protected Heading heading;
     transient protected Thread myThread;
-    protected int xc = 0;
-    protected int yc = 0;
+    protected int xc = Utilities.rng.nextInt(Simulation.SIZE);
+    protected int yc = Utilities.rng.nextInt(Simulation.SIZE);
     protected boolean suspended, stopped;
     protected Simulation world;
 

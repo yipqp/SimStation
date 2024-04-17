@@ -15,14 +15,17 @@ public class Simulation extends Model {
     }
 
     private void stopTimer() {
-        timer.cancel();
-        timer.purge();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+        }
     }
 
     public Simulation() {
         agents = new LinkedList<>();
     }
     public void start() {
+        stop();
         clock = 0;
         agents.removeAll(agents);
         startTimer();
