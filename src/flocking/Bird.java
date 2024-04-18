@@ -7,8 +7,6 @@ public class Bird extends Agent {
     protected int speed;
     public Bird() {
         super();
-        xc = Utilities.rng.nextInt(445);
-        yc = Utilities.rng.nextInt(445);
         heading = Heading.random();
         speed = Utilities.rng.nextInt(5) + 1;
     }
