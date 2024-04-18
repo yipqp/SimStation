@@ -33,6 +33,7 @@ public class PlagueSimulation extends Simulation {
         PlagueSimulation.STARTINFECTED = STARTINFECTED;
     }
 
+    @Override
     public String getStats() {
         int numOfAgents = agents.size();
         int timeInSec = getClock();

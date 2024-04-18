@@ -23,13 +23,12 @@ public class PrisonersDilemmaSimulation extends Simulation {
         }
     }
 
-    public double[] getStats() {
-        double[] stats = new double[4];
-        stats[0] = Cooperate.fitness / 10.0;
-        stats[1] = RandomlyCooperate.fitness / 10.0;
-        stats[2] = Cheat.fitness / 10.0;
-        stats[3] = Tit4Tat.fitness / 10.0;
-        return stats;
+    @Override
+    public String getStats() {
+        return  "Cooperate Fitness Average: " + Cooperate.fitness / 10.0 +
+                "\nRandomly Cooperate Fitness Average: " + RandomlyCooperate.fitness / 10.0 +
+                "\nCheat Fitness Average: " + Cheat.fitness / 10.0 +
+                "\nTit4Tat Fitness Average: " +  Tit4Tat.fitness / 10.0;
     }
 
     public void start() {

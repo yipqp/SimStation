@@ -39,6 +39,14 @@ public abstract class Agent implements Runnable, Serializable {
     public void setWorld(Simulation s) { world = s; }
     public String getName() { return name; }
 
+    public int getXc() {
+        return xc;
+    }
+
+    public int getYc() {
+        return yc;
+    }
+
     public Heading getHeading() {
         return heading;
     }
@@ -108,7 +116,7 @@ public abstract class Agent implements Runnable, Serializable {
                     }
                 }
                 break;
-            case EAST:
+            case WEST:
                 for (int i = 0; i < steps; i++) {
                     if (xc < 0) {
                         xc = Simulation.SIZE - 1;
@@ -117,7 +125,7 @@ public abstract class Agent implements Runnable, Serializable {
                     }
                 }
                 break;
-            case WEST:
+            case EAST:
                 for (int i = 0; i < steps; i++) {
                     if (xc > Simulation.SIZE - 1) {
                         xc = 0;
