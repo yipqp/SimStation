@@ -9,23 +9,17 @@ public class Host extends Agent{
     public Host() {
         super();
         heading = Heading.random();
-        xc = Utilities.rng.nextInt(445);
-        yc = Utilities.rng.nextInt(445);
     }
 
     public Host(String name) {
         super(name);
         heading = Heading.random();
-        xc = Utilities.rng.nextInt(445);
-        yc = Utilities.rng.nextInt(445);
     }
 
     public Host(String name, Boolean infected) {
         super(name);
         heading = Heading.random();
         this.infected = infected;
-        xc = Utilities.rng.nextInt(445);
-        yc = Utilities.rng.nextInt(445);
     }
 
     public void infect() {
