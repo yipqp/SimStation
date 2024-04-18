@@ -39,6 +39,14 @@ public abstract class Agent implements Runnable, Serializable {
     public void setWorld(Simulation s) { world = s; }
     public String getName() { return name; }
 
+    public int getXc() {
+        return xc;
+    }
+
+    public int getYc() {
+        return yc;
+    }
+
     public Heading getHeading() {
         return heading;
     }

@@ -23,7 +23,7 @@ public class PlagueView extends SimulationView {
             else {
                 g.setColor(Color.GREEN);
             }
-            g.fillOval(eachAgent.xc, eachAgent.yc, 10,10);
+            g.fillOval(eachAgent.getXc(), eachAgent.getYc(), 10,10);
         }
     }
 }
