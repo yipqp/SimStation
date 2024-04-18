@@ -1,6 +1,8 @@
 package src.simstation;
 
 
+import src.mvc.Utilities;
+
 import java.awt.*;
 import java.io.Serializable;
 
@@ -9,8 +11,8 @@ public abstract class Agent implements Runnable, Serializable {
     protected String name;
     protected Heading heading;
     transient protected Thread myThread;
-    protected int xc = 0;
-    protected int yc = 0;
+    protected int xc = Utilities.rng.nextInt(Simulation.SIZE);
+    protected int yc = Utilities.rng.nextInt(Simulation.SIZE);
     protected boolean suspended, stopped;
     protected Simulation world;
 
@@ -87,7 +89,6 @@ public abstract class Agent implements Runnable, Serializable {
     }
 
     public synchronized void move(int steps) {
-        Point oldPos = new Point(xc, yc);
         switch (heading) {
             case NORTH:
                 for (int i = 0; i < steps; i++) {
@@ -97,7 +98,6 @@ public abstract class Agent implements Runnable, Serializable {
                         yc = yc - 1;
                     }
                 }
-                world.changed();
                 break;
             case SOUTH:
                 for (int i = 0; i < steps; i++) {
@@ -107,7 +107,6 @@ public abstract class Agent implements Runnable, Serializable {
                         yc = yc + 1;
                     }
                 }
-                world.changed();
                 break;
             case EAST:
                 for (int i = 0; i < steps; i++) {
@@ -117,7 +116,6 @@ public abstract class Agent implements Runnable, Serializable {
                         xc = xc - 1;
                     }
                 }
-                world.changed();
                 break;
             case WEST:
                 for (int i = 0; i < steps; i++) {
@@ -127,9 +125,9 @@ public abstract class Agent implements Runnable, Serializable {
                         xc = xc + 1;
                     }
                 }
-                world.changed();
                 break;
         }
+        world.changed();
     }
 
     public abstract void update();

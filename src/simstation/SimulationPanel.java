@@ -50,7 +50,11 @@ public class SimulationPanel extends AppPanel{
                 case "Open": { //Override Open Button to properly import simulations
                     if (Utilities.confirm("Are you sure? Unsaved changes will be lost!")) {
                         Model newModel = Utilities.open(model);
-                        if (newModel != null) setModel(newModel);
+                        if (newModel != null) {
+                            ((Simulation) model).stop();
+                            setModel(newModel);
+                        }
+
                     }
                     Simulation s = (Simulation) model;
                     for (Agent a: s.agents) {
