@@ -23,6 +23,15 @@ public class PrisonersDilemmaSimulation extends Simulation {
         }
     }
 
+    public double[] getStats() {
+        double[] stats = new double[4];
+        stats[0] = Cooperate.fitness / 10.0;
+        stats[1] = RandomlyCooperate.fitness / 10.0;
+        stats[2] = Cheat.fitness / 10.0;
+        stats[3] = Tit4Tat.fitness / 10.0;
+        return stats;
+    }
+
     public void start() {
         super.start();
         Cheat.fitness = 0;
