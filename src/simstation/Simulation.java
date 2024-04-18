@@ -7,7 +7,7 @@ public class Simulation extends Model {
     transient private Timer timer; // timers aren't serializable
     private int clock = 0;
     protected static final int SIZE = 445; // ?? arbitrary number, figure it out later
-    protected List<Agent> agents;
+    public List<Agent> agents;
 
     private void startTimer() {
         timer = new Timer();
@@ -60,7 +60,9 @@ public class Simulation extends Model {
         for (Agent a: agents) {
             a.stop();
         }
-        stopTimer();
+        if(timer != null) {
+            stopTimer();
+        }
     }
 
     public Agent getNeighbor(Agent a, double radius) {
