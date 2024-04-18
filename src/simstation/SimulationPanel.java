@@ -66,6 +66,7 @@ public class SimulationPanel extends AppPanel{
 
                 case "New": {
                     Utilities.saveChanges(model);
+                    ((Simulation) model).stop();
                     setModel(appfactory.makeModel());
                     // needed cuz setModel sets to true:
                     model.setUnsavedChanges(false);

@@ -5,6 +5,11 @@ import src.simstation.Simulation;
 import src.simstation.SimulationPanel;
 
 public class PrisonersDilemmaSimulation extends Simulation {
+
+    public PrisonersDilemmaSimulation() {
+        super();
+        resetStats();
+    }
     public void populate() {
         for (int i = 0; i < 40; i++) {
             if (i % 4 == 1) {
@@ -32,7 +37,11 @@ public class PrisonersDilemmaSimulation extends Simulation {
     }
 
     public void start() {
+        resetStats();
         super.start();
+    }
+
+    public void resetStats() {
         Cheat.fitness = 0;
         Cooperate.fitness = 0;
         RandomlyCooperate.fitness = 0;
