@@ -33,6 +33,12 @@ public class PlagueSimulation extends Simulation {
         PlagueSimulation.STARTINFECTED = STARTINFECTED;
     }
 
+    public String getStats() {
+        int numOfAgents = agents.size();
+        int timeInSec = getClock();
+        return "#Agents = " + numOfAgents + "\nclock = " + timeInSec + "\n% infected = " + getPercentInfected();
+    }
+
     public double getPercentInfected() {
         int numInfected = 0;
         for(int i = 0; i < agents.size(); i++) {

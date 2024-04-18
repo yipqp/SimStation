@@ -12,8 +12,6 @@ public class PlagueStatsCommand extends StatsCommand {
     @Override
     public void execute() throws Exception {
         PlagueSimulation sim = (PlagueSimulation)model;
-        int numOfAgents = sim.agents.size();
-        int timeInSec = sim.getClock();
-        Utilities.inform("#Agents = " + numOfAgents + "\nclock = " + timeInSec + "\n% infected = " + sim.getPercentInfected());
+        Utilities.inform(sim.getStats());
     }
 }
