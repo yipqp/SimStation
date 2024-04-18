@@ -12,10 +12,11 @@ public class FitnessStatsCommand extends StatsCommand {
 
     @Override
     public void execute() throws Exception {
-        double avgCooperateFitness = Cooperate.fitness / 10.0;
-        double avgRandomlyCooperateFitness = RandomlyCooperate.fitness / 10.0;
-        double avgCheatFitness = Cheat.fitness / 10.0;
-        double avgTit4TatFitness = Tit4Tat.fitness / 10.0;
+        double[] stats = ((PrisonersDilemmaSimulation) model).getStats();
+        double avgCooperateFitness = stats[0];
+        double avgRandomlyCooperateFitness = stats[1];
+        double avgCheatFitness = stats[2];
+        double avgTit4TatFitness = stats[3];
         Utilities.inform("Cooperate Fitness Average: " + avgCooperateFitness + "\nRandomly Cooperate Fitness Average: " + avgRandomlyCooperateFitness + "\nCheat Fitness Average: " + avgCheatFitness + "\nTit4Tat Fitness Average: " + avgTit4TatFitness);
     }
 }
