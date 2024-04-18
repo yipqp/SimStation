@@ -13,8 +13,6 @@ public class StatsCommand extends Command {
     @Override
     public void execute() throws Exception {
         Simulation sim = (Simulation)model;
-        int numOfAgents = sim.agents.size();
-        int timeInSec = sim.getClock();
-        Utilities.inform("#Agents = " + numOfAgents + "\nclock = " + timeInSec);
+        Utilities.inform(sim.getStats());
     }
 }

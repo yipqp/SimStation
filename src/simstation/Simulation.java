@@ -1,6 +1,8 @@
 package src.simstation;
 
 import src.mvc.Model;
+import src.mvc.Utilities;
+
 import java.util.*;
 
 public class Simulation extends Model {
@@ -106,5 +108,11 @@ public class Simulation extends Model {
 
     public int getClock() {
         return clock;
+    }
+
+    public String getStats() {
+        int numOfAgents = agents.size();
+        int timeInSec = getClock();
+        return "#Agents = " + numOfAgents + "\nclock = " + timeInSec;
     }
 }
