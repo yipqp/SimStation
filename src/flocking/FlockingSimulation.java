@@ -7,7 +7,7 @@ public class FlockingSimulation extends Simulation{
 
     public void populate() {
         for (int i = 1; i <= 30; i++)
-            addAgent(new Bird());
+            addAgent(new Bird("Bird " + i));
     }
 
     @Override
