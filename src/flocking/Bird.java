@@ -13,8 +13,6 @@ public class Bird extends Agent {
 
     public Bird(String name) {
         super(name);
-        xc = Utilities.rng.nextInt(445);
-        yc = Utilities.rng.nextInt(445);
         heading = Heading.random();
         speed = Utilities.rng.nextInt(5) + 1;
     }
